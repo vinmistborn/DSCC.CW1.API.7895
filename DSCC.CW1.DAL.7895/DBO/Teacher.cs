@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace DSCC.CW1.API._7895.DBO
+namespace DSCC.CW1.DAL._7895.DBO
 {
     public class Teacher : IEntity
     {

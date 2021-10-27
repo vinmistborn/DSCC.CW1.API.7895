@@ -1,5 +1,5 @@
-﻿using DSCC.CW1.API._7895.DalDbContext;
-using DSCC.CW1.API._7895.DBO;
+﻿using DSCC.CW1.DAL._7895.DalDbContext;
+using DSCC.CW1.DAL._7895.DBO;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace DSCC.CW1.API._7895.Repositories
+namespace DSCC.CW1.DAL._7895.Repositories
 {
     public class GenericRepository<T> : IRepository<T> where T : class, IEntity
     {

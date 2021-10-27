@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using DSCC.CW1.API._7895.DBO;
-using DSCC.CW1.API._7895.DalDbContext;
-using DSCC.CW1.API._7895.Repositories;
+using DSCC.CW1.DAL._7895.DBO;
+using DSCC.CW1.DAL._7895.DalDbContext;
+using DSCC.CW1.DAL._7895.Repositories;
 
 namespace DSCC.CW1.API._7895.Controllers
 {

@@ -1,5 +1,5 @@
-using DSCC.CW1.API._7895.DalDbContext;
-using DSCC.CW1.API._7895.Repositories;
+using DSCC.CW1.DAL._7895.DalDbContext;
+using DSCC.CW1.DAL._7895.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

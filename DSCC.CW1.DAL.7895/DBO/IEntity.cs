@@ -1,4 +1,4 @@
-﻿namespace DSCC.CW1.API._7895.DBO
+﻿namespace DSCC.CW1.DAL._7895.DBO
 {
     public interface IEntity
     {

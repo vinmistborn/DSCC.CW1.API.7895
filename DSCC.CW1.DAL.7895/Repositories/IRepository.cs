@@ -1,10 +1,10 @@
-﻿using DSCC.CW1.API._7895.DBO;
+﻿using DSCC.CW1.DAL._7895.DBO;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace DSCC.CW1.API._7895.Repositories
+namespace DSCC.CW1.DAL._7895.Repositories
 {
     public interface IRepository<T> where T : IEntity
     {
