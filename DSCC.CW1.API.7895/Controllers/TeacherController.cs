@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DSCC.CW1.API._7895.DBO;
 using DSCC.CW1.API._7895.DalDbContext;
+using DSCC.CW1.API._7895.Repositories;
 
 namespace DSCC.CW1.API._7895.Controllers
 {
@@ -14,25 +15,25 @@ namespace DSCC.CW1.API._7895.Controllers
     [ApiController]
     public class TeacherController : ControllerBase
     {
-        private readonly ServiceDbContext _context;
+        private readonly IRepository<Teacher> _repo;
 
-        public TeacherController(ServiceDbContext context)
+        public TeacherController(IRepository<Teacher> repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         // GET: api/Teacher
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Teacher>>> GetTeachers()
         {
-            return await _context.Teachers.ToListAsync();
+            return await _repo.GetAllAsync();
         }
 
         // GET: api/Teacher/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Teacher>> GetTeacher(int id)
         {
-            var teacher = await _context.Teachers.FindAsync(id);
+            var teacher = await _repo.GetByIdAsync(id);
 
             if (teacher == null)
             {
@@ -52,15 +53,13 @@ namespace DSCC.CW1.API._7895.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(teacher).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await _repo.UpdateAsync(teacher);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TeacherExists(id))
+                if (!_repo.Exists(id))
                 {
                     return NotFound();
                 }
@@ -78,8 +77,7 @@ namespace DSCC.CW1.API._7895.Controllers
         [HttpPost]
         public async Task<ActionResult<Teacher>> PostTeacher(Teacher teacher)
         {
-            _context.Teachers.Add(teacher);
-            await _context.SaveChangesAsync();
+            await _repo.CreateAsync(teacher);
 
             return CreatedAtAction("GetTeacher", new { id = teacher.Id }, teacher);
         }
@@ -88,21 +86,15 @@ namespace DSCC.CW1.API._7895.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTeacher(int id)
         {
-            var teacher = await _context.Teachers.FindAsync(id);
+            var teacher = await _repo.GetByIdAsync(id);
             if (teacher == null)
             {
                 return NotFound();
             }
 
-            _context.Teachers.Remove(teacher);
-            await _context.SaveChangesAsync();
+            await _repo.DeleteAsync(teacher);
 
             return NoContent();
-        }
-
-        private bool TeacherExists(int id)
-        {
-            return _context.Teachers.Any(e => e.Id == id);
         }
     }
 }

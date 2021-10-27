@@ -1,4 +1,5 @@
 using DSCC.CW1.API._7895.DalDbContext;
+using DSCC.CW1.API._7895.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +29,7 @@ namespace DSCC.CW1.API._7895
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
