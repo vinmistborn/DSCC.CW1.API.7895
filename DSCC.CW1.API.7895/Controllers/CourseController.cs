@@ -26,14 +26,14 @@ namespace DSCC.CW1.API._7895.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourse()
         {
-            return await _repo.GetAllAsync(a => a.Teacher);
+            return await _repo.GetAllAsync();
         }
 
         // GET: api/Course/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Course>> GetCourse(int id)
         {
-            var course = await _repo.GetByIdAsync(id, a => a.Teacher);
+            var course = await _repo.GetByIdAsync(id);
 
             if (course == null)
             {

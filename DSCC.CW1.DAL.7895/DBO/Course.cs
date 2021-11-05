@@ -13,9 +13,6 @@ namespace DSCC.CW1.DAL._7895.DBO
         public double Fee { get; set; }
         [Required]
         [StringLength(15)]
-        public string Duration { get; set; }
-        public int TeacherId { get; set; }
-        [JsonIgnore]
-        public Teacher Teacher { get; set; }
+        public string Duration { get; set; }        
     }
 }

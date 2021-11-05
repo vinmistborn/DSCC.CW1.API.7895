@@ -12,9 +12,7 @@ namespace DSCC.CW1.DAL._7895.DalDbContext
         public ServiceDbContext(DbContextOptions options) : base(options)
         {
 
-        }
-
-        public DbSet<Teacher> Teachers { get; set; }
+        }        
         public DbSet<Course> Course { get; set; }
     }
 }
