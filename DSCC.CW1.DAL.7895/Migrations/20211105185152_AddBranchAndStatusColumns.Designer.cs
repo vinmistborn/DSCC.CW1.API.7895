@@ -3,14 +3,16 @@ using DSCC.CW1.DAL._7895.DalDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DSCC.CW1.DAL._7895.Migrations
 {
     [DbContext(typeof(ServiceDbContext))]
-    partial class ServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211105185152_AddBranchAndStatusColumns")]
+    partial class AddBranchAndStatusColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,11 +35,8 @@ namespace DSCC.CW1.DAL._7895.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<decimal>("Fee")
-                        .HasColumnType("money");
-
-                    b.Property<int?>("Level")
-                        .HasColumnType("int");
+                    b.Property<double>("Fee")
+                        .HasColumnType("float");
 
                     b.Property<string>("Name")
                         .IsRequired()
