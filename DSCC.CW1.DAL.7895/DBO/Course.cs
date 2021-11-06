@@ -16,6 +16,7 @@ namespace DSCC.CW1.DAL._7895.DBO
         [Required]
         [StringLength(15)]
         public string Duration { get; set; }
+        //Level, Branch and Status entites were defined as nullable to avoid conflicts in migrations
         public Level? Level { get; set; }
         public Branch? Branch { get; set; }
         public Status? Status { get; set; }

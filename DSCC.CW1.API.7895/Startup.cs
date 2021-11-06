@@ -29,12 +29,14 @@ namespace DSCC.CW1.API._7895
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //registration of repositories
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DSCC.CW1.API._7895", Version = "v1" });
             });
+            //registration of the database with connection string and database provider
             services.AddDbContext<ServiceDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ServiceDb7895")));
         }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSCC.CW1.DAL._7895.Repositories
 {
+    //T => Generics has a contraint => should be only a type of IEntity interface
     public interface IRepository<T> where T : IEntity
     {
         bool Exists(int id);
