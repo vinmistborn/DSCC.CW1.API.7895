@@ -36,31 +36,20 @@ namespace DSCC.CW1.DAL._7895.Repositories
             return _dbTable.Any(a => a.Id == id);
         }
 
-        public async Task<List<T>> GetAllAsync(params Expression<Func<T, object>>[] navigationProperties)
+        public async Task<List<T>> GetAllAsync()
         {
-            return await IncludeNavigationProperties(_dbTable, navigationProperties).ToListAsync();
+            return await _dbTable.ToListAsync();            
         }
 
-        public async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] navigationProperties)
+        public async Task<T> GetByIdAsync(int id)
         {
-            return await IncludeNavigationProperties(_dbTable, navigationProperties).SingleOrDefaultAsync(a => a.Id == id);
+            return await _dbTable.SingleOrDefaultAsync(a => a.Id == id);            
         }
 
         public async Task UpdateAsync(T entity)
         {
             _dbTable.Update(entity);
             await _context.SaveChangesAsync();
-        }
-
-        public static IQueryable<T> IncludeNavigationProperties(IQueryable<T> query ,params Expression<Func<T, object>>[] navigationProperties)
-        {
-            if (navigationProperties != null)
-            {
-                query = navigationProperties.Aggregate(query,
-                          (current, include) => current.Include(include));
-            }
-
-            return query;
         }
     }
 }

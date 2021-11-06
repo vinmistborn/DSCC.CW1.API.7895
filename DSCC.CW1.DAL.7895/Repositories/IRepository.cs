@@ -12,7 +12,7 @@ namespace DSCC.CW1.DAL._7895.Repositories
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
-        Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] navigationProperties);
-        Task<List<T>> GetAllAsync(params Expression<Func<T, object>>[] navigationProperties);
+        Task<T> GetByIdAsync(int id);
+        Task<List<T>> GetAllAsync();
     }
 }
