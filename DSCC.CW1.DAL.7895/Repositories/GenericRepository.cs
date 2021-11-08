@@ -93,6 +93,10 @@ namespace DSCC.CW1.DAL._7895.Repositories
             await SaveAsync();
         }
 
+        /// <summary>
+        /// Saves the changes to the database
+        /// </summary>
+        /// <returns></returns>
         private async Task SaveAsync()
         {
             await _context.SaveChangesAsync();
