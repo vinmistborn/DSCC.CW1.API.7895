@@ -38,7 +38,7 @@ namespace DSCC.CW1.DAL._7895.Repositories
         {
             _dbTable.Add(entity);
             //The insertion will be saved in the database
-            await _context.SaveChangesAsync();
+            await SaveAsync();
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace DSCC.CW1.DAL._7895.Repositories
         {
             _dbTable.Remove(entity);
             //Changes are saved after the deletion
-            await _context.SaveChangesAsync();
+            await SaveAsync();
         }
 
         /// <summary>
@@ -90,6 +90,11 @@ namespace DSCC.CW1.DAL._7895.Repositories
         public async Task UpdateAsync(T entity)
         {
             _dbTable.Update(entity);
+            await SaveAsync();
+        }
+
+        private async Task SaveAsync()
+        {
             await _context.SaveChangesAsync();
         }
     }
