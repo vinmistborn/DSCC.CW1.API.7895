@@ -130,7 +130,7 @@ namespace DSCC.CW1.API._7895.Controllers
             //if there is no such course
             if (course == null)
             {
-                //returns a status code 204 Not Found
+                //returns a status code 404 Not Found
                 return NotFound();
             }
 
