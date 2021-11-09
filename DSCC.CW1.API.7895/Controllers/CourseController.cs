@@ -84,8 +84,10 @@ namespace DSCC.CW1.API._7895.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
+                //if a course with given id is not found
                 if (!_repo.Exists(id))
                 {
+                    //returns a status code 404 Not Found
                     return NotFound();
                 }
                 else
